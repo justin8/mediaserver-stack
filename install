@@ -28,8 +28,8 @@ done
 
 mkdir -p /etc/cron.d
 cp "$dir/files/mediaserver.service" /etc/systemd/system/mediaserver.service
-ln -sf "$dir/files/check-mediaserver.cron" "/etc/cron.d/check-mediaserver.cron"
-ln -sf "$dir/files/restart-mediaserver.cron" "/etc/cron.d/restart-mediaserver.cron"
+cp "$dir/files/check-mediaserver.cron" "/etc/cron.d/check-mediaserver.cron"
+cp "$dir/files/restart-mediaserver.cron" "/etc/cron.d/restart-mediaserver.cron"
 
 mkdir -p /etc/samba
 cp "$dir/files/smb.conf" "/etc/samba/smb.conf"
