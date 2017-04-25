@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+if ! mount|grep -q /mnt/external1; then
+	echo "External disk doesn't appear to be mounted"
+	exit 1
+fi
+
+cd "$(dirname "$(readlink -f "$0")")"
+
+if [[ $1 == down ]]; then
+	docker-compose "$@"
+fi
+
+docker-compose "$@"
