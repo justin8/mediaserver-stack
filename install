@@ -33,7 +33,7 @@ cp "$dir/files/restart-mediaserver.cron" "/etc/cron.d/restart-mediaserver.cron"
 
 mkdir -p /etc/samba
 cp "$dir/files/smb.conf" "/etc/samba/smb.conf"
-sed -i "s|__CONFIG_DIR__|$CONFIG_DIR|g" /etc/samba/smb.conf
+sed -i "s|__STORAGE_DIR__|$STORAGE_DIR|g" /etc/samba/smb.conf
 
 systemctl daemon-reload
 systemctl enable mediaserver
