@@ -19,13 +19,6 @@ dir="$(dirname "$(readlink -f "$0")")"
 mkdir -p /usr/lib/mediaserver
 rsync -r "$dir/files/mediaserver/" /usr/lib/mediaserver/
 
-for variable in JACKETT_DNS SONARR_DNS TRANSMISSION_DNS COUCHPOTATO_DNS; do 
-	value=$(eval echo "\$$variable")
-	for file in /usr/lib/mediaserver/nginx/sites-enabled/*; do
-		sed -i "s|__${variable}__|$value|g" "$file"
-	done
-done
-
 mkdir -p /etc/cron.d
 cp "$dir/files/mediaserver.service" /etc/systemd/system/mediaserver.service
 cp "$dir/files/check-mediaserver.cron" "/etc/cron.d/check-mediaserver.cron"

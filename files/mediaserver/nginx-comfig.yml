@@ -1,0 +1,10 @@
+port: 8080
+services:
+  - name: "transmission"
+    host: "vpn:9091"
+  - name: "couchpotato"
+    host: "vpn:5050"
+  - name: "jackett"
+    host: "vpn:9117"
+  - name: "sonarr"
+    host: "vpn:8989"

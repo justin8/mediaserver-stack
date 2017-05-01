@@ -68,16 +68,13 @@ services:
         healthcheck:
           test: "curl -ILXGET http://localhost:9117"
     nginx:
-        image: nginx
+        image: justin8/simple-proxy
+        environment:
+          - "DNS_TLD=$DNS_TLD"
         volumes:
-          - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-          - ./nginx:/nginx:ro
-          - ./nginx/conf.d:/etc/nginx/conf.d:ro
-          - ./nginx/sites-enabled:/etc/nginx/sites-enabled:ro
-          - /var/log/nginx:/var/log/nginx:rw
+          - ./nginx-config.yml:/config.yml:ro
         ports:
-          - "80:80"
-          - "443:443"
+          - "8080:8080"
         depends_on:
           - vpn
         links:
