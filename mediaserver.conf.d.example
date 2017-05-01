@@ -2,5 +2,5 @@
 VPN_USER=foo
 VPN_PASS=bar
 CONFIG_DIR=/mnt/external1/apps
-STORAGE_MOUNT=/mnt/external1:/mnt/external1:rw
+STORAGE_DIR=/mnt/external1
 DNS_TLD=foo.com
