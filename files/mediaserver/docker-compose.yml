@@ -52,7 +52,6 @@ services:
           - jackett
         volumes:
           - $CONFIG_DIR/couchpotato:/config
-          - $STORAGE_MOUNT
           - ${STORAGE_DIR}:${STORAGE_DIR}:rw
         healthcheck:
           test: "curl -ILXGET http://localhost:5050/login"
