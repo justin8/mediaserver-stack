@@ -1,9 +1,8 @@
-version: '2'
+version: '3'
 
 services:
     vpn:
         image: colinhebert/pia-openvpn
-        restart: always
         privileged: true
         entrypoint:
           - sh
@@ -13,9 +12,10 @@ services:
           - 'REGION=AU Sydney'
           - 'USERNAME=$VPN_USER'
           - 'PASSWORD=$VPN_PASS'
+        healthcheck:
+          test: "wget http://www.google.com -O /dev/null"
     transmission:
         image: linuxserver/transmission
-        restart: always
         network_mode: "service:vpn"
         environment:
           - 'PGID=0'
@@ -25,9 +25,10 @@ services:
         volumes:
           - $CONFIG_DIR/transmission:/config:rw
           - $STORAGE_MOUNT
+        healthcheck:
+          test: "curl -ILXGET http://localhost:9091"
     sonarr:
         image: linuxserver/sonarr
-        restart: always
         network_mode: "service:vpn"
         environment:
           - 'PGID=0'
@@ -38,9 +39,10 @@ services:
         volumes:
           - $CONFIG_DIR/sonarr:/config:rw
           - $STORAGE_MOUNT
+        healthcheck:
+          test: "curl -ILXGET http://localhost:8989"
     couchpotato:
         image: linuxserver/couchpotato
-        restart: always
         network_mode: "service:vpn"
         environment:
           - 'PGID=0'
@@ -51,9 +53,10 @@ services:
         volumes:
           - $CONFIG_DIR/couchpotato:/config
           - $STORAGE_MOUNT
+        healthcheck:
+          test: "curl -ILXGET http://localhost:5050/login"
     jackett:
         image: linuxserver/jackett
-        restart: always
         network_mode: "service:vpn"
         environment:
           - 'PGID=0'
@@ -62,9 +65,10 @@ services:
           - vpn
         volumes:
           - $CONFIG_DIR/jackett:/config
+        healthcheck:
+          test: "curl -ILXGET http://localhost:9117"
     nginx:
         image: nginx
-        restart: always
         volumes:
           - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
           - ./nginx:/nginx:ro
