@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
     vpn:
@@ -7,19 +7,19 @@ services:
         entrypoint:
           - sh
           - -c
-          - echo 'nameserver 8.8.8.8' > /etc/resolv.conf; openvpn.sh
+          - echo "nameserver 8.8.8.8" > /etc/resolv.conf; openvpn.sh
         environment:
-          - 'REGION=AU Sydney'
-          - 'USERNAME=$VPN_USER'
-          - 'PASSWORD=$VPN_PASS'
+          - "REGION=AU Sydney"
+          - "USERNAME=$VPN_USER"
+          - "PASSWORD=$VPN_PASS"
         healthcheck:
           test: "wget http://www.google.com -O /dev/null"
     transmission:
         image: linuxserver/transmission
         network_mode: "service:vpn"
         environment:
-          - 'PGID=0'
-          - 'PUID=0'
+          - "PGID=0"
+          - "PUID=0"
         depends_on:
             - vpn
         volumes:
@@ -31,8 +31,8 @@ services:
         image: linuxserver/sonarr
         network_mode: "service:vpn"
         environment:
-          - 'PGID=0'
-          - 'PUID=0'
+          - "PGID=0"
+          - "PUID=0"
         depends_on:
           - vpn
           - jackett
@@ -45,8 +45,8 @@ services:
         image: linuxserver/couchpotato
         network_mode: "service:vpn"
         environment:
-          - 'PGID=0'
-          - 'PUID=0'
+          - "PGID=0"
+          - "PUID=0"
         depends_on:
           - vpn
           - jackett
@@ -59,8 +59,8 @@ services:
         image: linuxserver/jackett
         network_mode: "service:vpn"
         environment:
-          - 'PGID=0'
-          - 'PUID=0'
+          - "PGID=0"
+          - "PUID=0"
         depends_on:
           - vpn
         volumes:
