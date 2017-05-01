@@ -3,6 +3,7 @@ version: "3"
 services:
     vpn:
         image: colinhebert/pia-openvpn
+        network_mode: bridge
         privileged: true
         entrypoint:
           - sh
@@ -69,8 +70,11 @@ services:
           test: "curl -ILXGET http://localhost:9117"
     nginx:
         image: justin8/simple-proxy
+        network_mode: bridge
         environment:
           - "DNS_TLD=$DNS_TLD"
+          - "VIRTUAL_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},couchpotato.${DNS_TLD},jackett.${DNS_TLD}"
+          - "VIRTUAL_PORT=8080"
         volumes:
           - ./nginx-config.yml:/config.yml:ro
         ports:
