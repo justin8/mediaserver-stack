@@ -13,9 +13,9 @@ This is a basic docker-compose setup that will run nginx, sonarr, couchpotato, j
 
 To install/update the service:
 
-1. Make a copy of `mediaserver.conf.example` somewhere.
-2. Run `sudo portinus --name mediaserver --source $THIS_FOLDER --env $CONFIG_FILE --restart daily`
-4. On first install, some things will need to be manually set up prior to opening the service up; i.e. passwords for the services. Keep in mind that transmission overwrites the config on shutdown, so only edit it's config while offline.
+1. Make a copy of `mediaserver.conf.example` as `mediaserver.conf` in this folder and customize it
+2. Run `./install`
+3. On first install, some things will need to be manually set up prior to opening the service up; i.e. passwords for the services. Keep in mind that transmission overwrites the config on shutdown, so only edit it's config while offline.
 
 
 ## Notes
