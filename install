@@ -1,0 +1,6 @@
+#!/bin/bash
+set -x
+
+cd "$(dirname "$(readlink -f "$0")")"
+
+portinus ensure --name mediaserver-stack --source "$PWD" --env "$PWD/mediaserver.conf" --restart daily

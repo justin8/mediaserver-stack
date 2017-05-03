@@ -5,9 +5,8 @@ This is a basic docker-compose setup that will run nginx, sonarr, couchpotato, j
 ## Requirements:
 * docker
 * docker-compose
+* portinus (pip package)
 * python3
-* python-click
-* python-docker
 * systemd
 
 ## Usage
