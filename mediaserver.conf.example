@@ -4,3 +4,4 @@ VPN_PASS=bar
 CONFIG_DIR=/mnt/external1/apps
 STORAGE_DIR=/mnt/external1
 DNS_TLD=foo.com
+LETSENCRYPT_EMAIL=user@foo.com

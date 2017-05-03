@@ -73,8 +73,10 @@ services:
         network_mode: bridge
         environment:
           - "DNS_TLD=$DNS_TLD"
-          - "VIRTUAL_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},couchpotato.${DNS_TLD},jackett.${DNS_TLD}"
           - "VIRTUAL_PORT=8080"
+          - "VIRTUAL_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},couchpotato.${DNS_TLD},jackett.${DNS_TLD}"
+          - "LETSENCRYPT_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},couchpotato.${DNS_TLD},jackett.${DNS_TLD}"
+          - "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}"
         volumes:
           - ./nginx-config.yml:/config.yml:ro
         ports:
