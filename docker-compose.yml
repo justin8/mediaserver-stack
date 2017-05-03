@@ -19,8 +19,8 @@ services:
         image: linuxserver/transmission
         network_mode: "service:vpn"
         environment:
-          - "PGID=0"
-          - "PUID=0"
+          - "PGID=${GID}"
+          - "PUID=${UID}"
         depends_on:
             - vpn
         volumes:
@@ -32,8 +32,8 @@ services:
         image: linuxserver/sonarr
         network_mode: "service:vpn"
         environment:
-          - "PGID=0"
-          - "PUID=0"
+          - "PGID=${GID}"
+          - "PUID=${UID}"
         depends_on:
           - vpn
           - jackett
@@ -46,8 +46,8 @@ services:
         image: linuxserver/couchpotato
         network_mode: "service:vpn"
         environment:
-          - "PGID=0"
-          - "PUID=0"
+          - "PGID=${GID}"
+          - "PUID=${UID}"
         depends_on:
           - vpn
           - jackett
@@ -60,8 +60,8 @@ services:
         image: linuxserver/jackett
         network_mode: "service:vpn"
         environment:
-          - "PGID=0"
-          - "PUID=0"
+          - "PGID=${GID}"
+          - "PUID=${UID}"
         depends_on:
           - vpn
         volumes:
