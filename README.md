@@ -1,4 +1,4 @@
-# Media server
+# Media server stack
 
 This is a basic docker-compose setup that will run nginx, sonarr, couchpotato, jackett and transmission. The conf.d example file is used to specify the domains to respond on, as well as the folders to use for config and to mount for storage of files in the containers. It also sets up samba to have a single share for the storage mount point on the local network.
 
