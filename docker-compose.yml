@@ -68,6 +68,15 @@ services:
           - $CONFIG_DIR/jackett:/config
         healthcheck:
           test: "curl -ILXGET http://localhost:9117"
+    mediaserver:
+        image: linuxserver/muximux
+        environment:
+          - "VIRTUAL_HOST=mediaserver.${DNS_TLD}"
+          - "VIRTUAL_PORT=80"
+          - "LETSENCRYPT_HOST=mediaserver.${DNS_TLD}"
+          - "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}"
+        expose:
+          - "80"
     nginx:
         image: justin8/simple-proxy
         network_mode: bridge
