@@ -91,7 +91,7 @@ services:
         volumes:
           - ./nginx-config.yml:/config.yml:ro
         ports:
-          - "${port}:${port}"
+          - "${PORT}:${PORT}"
         depends_on:
           - vpn
         links:
