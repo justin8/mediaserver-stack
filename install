@@ -3,4 +3,4 @@ set -x
 dir="$(dirname "$(readlink -f "$0")")"
 name="$(basename "$dir")"
 
-portinus ensure --name "$name" --source "$dir" --env "$dir/mediaserver.conf" --restart daily
+portinus ensure "$name" --source "$dir" --env "$dir/mediaserver.conf" --restart daily
