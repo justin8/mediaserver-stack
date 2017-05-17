@@ -6,5 +6,5 @@ STORAGE_DIR=/mnt/external1
 DNS_TLD=foo.com
 LETSENCRYPT_EMAIL=user@foo.com
 PORT=8080
-UID=0
-GID=0
+PUID=0
+PGID=0
