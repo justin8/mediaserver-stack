@@ -3,4 +3,8 @@ set -x
 dir="$(dirname "$(readlink -f "$0")")"
 name="$(basename "$dir")"
 
+for image in colinhebert/pia-openvpn linuxserver/transmission linuxserver/sonarr linuxserver/couchpotato linuxserver/jackett linuxserver/muximux justin8/simple-proxy; do
+    docker pull $image
+done
+
 portinus ensure "$name" --source "$dir" --env "$dir/mediaserver.conf" --restart daily
