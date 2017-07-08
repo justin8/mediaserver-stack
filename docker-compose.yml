@@ -77,8 +77,9 @@ services:
           - "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}"
         volumes:
           - $CONFIG_DIR/muximux:/config
+          - ./muximux-fix:/etc/cont-init.d/30-muximux-fix
         healthcheck:
-          test: "wget localhost -O /dev/null"
+          test: "curl localhost -o /dev/null"
     nginx:
         image: justin8/simple-proxy
         network_mode: bridge
