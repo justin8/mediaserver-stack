@@ -85,9 +85,9 @@ services:
         network_mode: bridge
         environment:
           - "DNS_TLD=$DNS_TLD"
-          - "PROXY_PORT=8080"
+          - "PROXY_PORT=${PORT}"
           - "PROXY_ENDPOINTS=transmission,vpn:9091;couchpotato,vpn:5050;jackett,vpn:9117;sonarr,vpn:8989"
-          - "VIRTUAL_PORT=8080"
+          - "VIRTUAL_PORT=${PORT}"
           - "VIRTUAL_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},couchpotato.${DNS_TLD},jackett.${DNS_TLD}"
           - "LETSENCRYPT_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},couchpotato.${DNS_TLD},jackett.${DNS_TLD}"
           - "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}"
