@@ -1,0 +1,18 @@
+language: none
+
+branches:
+  only:
+    - master
+
+build:
+  ci:
+    - git remote set-url origin git@github.com:justin8/mediaserver-stack.git
+    # Update raspberry-pi2 branch
+    - git checkout raspberry-pi2
+    - git rebase origin/master
+    - GIT_SSH_COMMAND="ssh -i /tmp/ssh/shippablemediaserverstackdeploykey" git push -f
+
+integrations:
+  key:
+    - integrationName: shippable-mediaserver-stack-deploy-key
+      type: ssh-key
