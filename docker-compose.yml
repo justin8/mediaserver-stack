@@ -72,6 +72,8 @@ services:
         image: linuxserver/muximux
         network_mode: bridge
         environment:
+          - "PGID=${PGID}"
+          - "PUID=${PUID}"
           - "VIRTUAL_HOST=mediaserver.${DNS_TLD}"
           - "LETSENCRYPT_HOST=mediaserver.${DNS_TLD}"
           - "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}"
