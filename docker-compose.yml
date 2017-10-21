@@ -68,20 +68,6 @@ services:
           - $CONFIG_DIR/jackett:/config
         healthcheck:
           test: "curl -ILXGET http://localhost:9117"
-    mediaserver:
-        image: linuxserver/muximux
-        network_mode: bridge
-        environment:
-          - "PGID=${PGID}"
-          - "PUID=${PUID}"
-          - "VIRTUAL_HOST=mediaserver.${DNS_TLD}"
-          - "LETSENCRYPT_HOST=mediaserver.${DNS_TLD}"
-          - "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}"
-        volumes:
-          - $CONFIG_DIR/muximux:/config
-          - ./muximux-fix:/etc/cont-init.d/30-muximux-fix
-        healthcheck:
-          test: "curl localhost -o /dev/null"
     nginx:
         image: justin8/simple-proxy
         network_mode: bridge
