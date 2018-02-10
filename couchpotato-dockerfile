@@ -1,0 +1,3 @@
+FROM linuxserver/couchpotato
+
+ADD wait-for-jackett /etc/cont-init.d/99-wait-for-jackett

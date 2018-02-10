@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Waiting for jackett to respond..."
+for i in {1..12}; do
+	sleep 10
+	if timeout 2 nc -z localhost 9117; then
+		echo "Jackett has started. Continuing"
+		exit 0
+	else
+		echo "Jackett hasn't started yet. Waiting"
+	fi
+done
+echo "Jackett failed to start."
+exit 1

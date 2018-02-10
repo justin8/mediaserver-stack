@@ -29,7 +29,9 @@ services:
         healthcheck:
           test: "curl -ILXGET http://localhost:9091"
     sonarr:
-        image: linuxserver/sonarr
+        build:
+          context: .
+          dockerfile: sonarr-dockerfile
         network_mode: "service:vpn"
         environment:
           - "PGID=${PGID}"
@@ -43,7 +45,9 @@ services:
         healthcheck:
           test: "curl -ILXGET http://localhost:8989"
     couchpotato:
-        image: linuxserver/couchpotato
+        build:
+          context: .
+          dockerfile: couchpotato-dockerfile
         network_mode: "service:vpn"
         environment:
           - "PGID=${PGID}"
