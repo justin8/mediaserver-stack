@@ -2,7 +2,7 @@ version: "3"
 
 services:
     vpn:
-        image: colinhebert/pia-openvpn
+        image: justin8/pia-openvpn:armhf
         network_mode: bridge
         privileged: true
         entrypoint:
@@ -16,7 +16,7 @@ services:
         healthcheck:
           test: "wget http://www.google.com -O /dev/null"
     transmission:
-        image: linuxserver/transmission
+        image: lsioarmhf/transmission
         network_mode: "service:vpn"
         environment:
           - "PGID=${PGID}"
@@ -61,7 +61,7 @@ services:
         healthcheck:
           test: "curl -ILXGET http://localhost:7878"
     jackett:
-        image: linuxserver/jackett
+        image: lsioarmhf/jackett
         network_mode: "service:vpn"
         environment:
           - "PGID=${PGID}"
@@ -73,7 +73,7 @@ services:
         healthcheck:
           test: "curl -ILXGET http://localhost:9117"
     nginx:
-        image: justin8/simple-proxy
+        image: justin8/simple-proxy:armhf
         network_mode: bridge
         environment:
           - "DNS_TLD=$DNS_TLD"

@@ -1,4 +1,4 @@
-FROM linuxserver/sonarr
+FROM lsioarmhf/sonarr
 
 RUN apt-get update && apt-get install -y netcat
 ADD wait-for-jackett /etc/cont-init.d/99-wait-for-jackett
