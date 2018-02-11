@@ -1,0 +1,7 @@
+#!/bin/bash
+
+branch=$1
+
+git checkout $branch
+git rebase origin/master
+GIT_SSH_COMMAND="ssh -i /tmp/ssh/shippablemediaserverstackdeploykey" git push -f

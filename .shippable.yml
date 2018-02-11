@@ -7,10 +7,10 @@ branches:
 build:
   ci:
     - git remote set-url origin git@github.com:justin8/mediaserver-stack.git
-    # Update armhf branch
-    - git checkout armhf
-    - git rebase origin/master
-    - GIT_SSH_COMMAND="ssh -i /tmp/ssh/shippablemediaserverstackdeploykey" git push -f
+    # Update branches
+    - ./.shippable-update-branch pia-armhf
+    - ./.shippable-update-branch pia-x86
+    - ./.shippable-update-branch torguard-x86
 
 integrations:
   key:
