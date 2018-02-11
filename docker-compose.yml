@@ -2,7 +2,7 @@ version: "3"
 
 services:
     vpn:
-        image: colinhebert/pia-openvpn
+        image: justin8/torguard-openvpn
         network_mode: bridge
         privileged: true
         entrypoint:
@@ -10,7 +10,7 @@ services:
           - -c
           - echo "nameserver 8.8.8.8" > /etc/resolv.conf; openvpn.sh
         environment:
-          - "REGION=AU Sydney"
+          - "REGION=Australia.Sydney"
           - "USERNAME=$VPN_USER"
           - "PASSWORD=$VPN_PASS"
         healthcheck:
