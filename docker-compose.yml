@@ -44,10 +44,10 @@ services:
           - ${STORAGE_DIR}:${STORAGE_DIR}:rw
         healthcheck:
           test: "curl -ILXGET http://localhost:8989"
-    couchpotato:
+    radarr:
         build:
           context: .
-          dockerfile: couchpotato-dockerfile
+          dockerfile: radarr-dockerfile
         network_mode: "service:vpn"
         environment:
           - "PGID=${PGID}"
@@ -56,10 +56,10 @@ services:
           - vpn
           - jackett
         volumes:
-          - $CONFIG_DIR/couchpotato:/config
+          - $CONFIG_DIR/radarr:/config
           - ${STORAGE_DIR}:${STORAGE_DIR}:rw
         healthcheck:
-          test: "curl -ILXGET http://localhost:5050/login"
+          test: "curl -ILXGET http://localhost:7878"
     jackett:
         image: linuxserver/jackett
         network_mode: "service:vpn"
@@ -78,10 +78,10 @@ services:
         environment:
           - "DNS_TLD=$DNS_TLD"
           - "PROXY_PORT=${PORT}"
-          - "PROXY_ENDPOINTS=transmission,vpn:9091;couchpotato,vpn:5050;jackett,vpn:9117;sonarr,vpn:8989"
+          - "PROXY_ENDPOINTS=transmission,vpn:9091;jackett,vpn:9117;sonarr,vpn:8989;radarr,vpn:7878"
           - "VIRTUAL_PORT=${PORT}"
-          - "VIRTUAL_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},couchpotato.${DNS_TLD},jackett.${DNS_TLD}"
-          - "LETSENCRYPT_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},couchpotato.${DNS_TLD},jackett.${DNS_TLD}"
+          - "VIRTUAL_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},jackett.${DNS_TLD},radarr.${DNS_TLD}"
+          - "LETSENCRYPT_HOST=transmission.${DNS_TLD},sonarr.${DNS_TLD},jackett.${DNS_TLD},radarr.${DNS_TLD}"
           - "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}"
         ports:
           - "${PORT}:${PORT}"

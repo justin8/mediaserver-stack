@@ -1,3 +1,3 @@
-FROM linuxserver/couchpotato
+FROM linuxserver/radarr
 
 ADD wait-for-jackett /etc/cont-init.d/99-wait-for-jackett
