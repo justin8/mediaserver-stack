@@ -4,7 +4,7 @@ set -x
 dir="$(dirname "$(readlink -f "$0")")"
 name="$(basename "$dir")"
 cd "$dir"
-image_list="$(cat docker-compose.yml|grep -E '^\s+image:' | awk '{print $2}')"
+image_list="$(cat docker-compose.yml|grep -E '^\s+image:' | awk '{print $2}' && cat *ockerfile|grep -E FROM | awk '{print $2}')"
 
 if [[ $1 != '--fast' ]]; then
 	for image in $image_list; do
