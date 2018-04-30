@@ -1,4 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-# For some reason wget sometimes fails to read muximux and breaks health checks...
-apk add -U curl
